@@ -69,9 +69,14 @@ button:focus-visible {
 }
 
 #root {
-  width: 100vw;
-  height: 100vh;
+  width: 678px;
+  background-color: #fff;
   position: relative;
+  margin: auto;
+}
+
+#root ymaps {
+  height: 980px;
 }
 
 .marker {
@@ -212,7 +217,7 @@ button:focus-visible {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px
+  gap: 8px;
 }
 
 .timer-ui {
@@ -224,10 +229,11 @@ button:focus-visible {
   padding: 20px;
   width: 100%;
   justify-content: center;
+  display: none;
 }
 
 .timer-ui__timer {
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   bottom: 0;
   color: white;
   padding: 16px;
@@ -238,13 +244,13 @@ button:focus-visible {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px
+  gap: 8px;
 }
 
 .solve-ui__score::before {
-  content: '';
+  content: "";
   display: block;
   width: 24px;
   height: 24px;
-  background: url('./assets/box.svg');
+  background: url("./assets/box.svg");
 }
