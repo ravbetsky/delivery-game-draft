@@ -34,8 +34,10 @@ function AdminUI({
         Скопировать уровень как JSON
       </button>
       <div>
+        {/* @ts-ignore */}
         <textarea onChange={(e) => setLevelJSON(e.target.value)} />
         <br />
+        {/* @ts-ignore */}
         <button onClick={() => levelStore.addLevel(JSON.parse(levelJSON))}>
           Сохранить JSON уровень
         </button>

@@ -1,7 +1,4 @@
-import React, {
-  useCallback,
-  useState,
-} from "react";
+import React, { useCallback, useState } from "react";
 import { useMapAPI } from "../../shared/lib/map/MapProvider.hooks";
 import { levelStore } from "../../entities/level/store";
 import { useConnections, usePoints } from "./Editor.hooks";
@@ -20,8 +17,11 @@ function Editor() {
     levelStore.addLevel({
       connections: connections.map((connection) => connection.sort()),
       points: points,
+      //   @ts-ignore
       zoom: window.mapInstance.zoom!,
+      //   @ts-ignore
       bounds: window.mapInstance.bounds!,
+      //   @ts-ignore
       center: window.mapInstance.center!,
     });
   }, [connections, points]);
@@ -48,6 +48,7 @@ function Editor() {
       <button onClick={handleSaveLevel}>Сохранить уровень</button>
       {connectionFrom && (
         <YMapListener
+          // @ts-ignore
           onPointerMove={(_, data) => setConnectionToCoords(data.coordinates)}
         />
       )}
@@ -80,7 +81,7 @@ function Editor() {
             />
           )
       )}
-      {connections.map( 
+      {connections.map(
         (connection) =>
           connection.every((connectionId) =>
             points.some((point) => point.id === connectionId)

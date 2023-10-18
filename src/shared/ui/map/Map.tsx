@@ -11,6 +11,7 @@ function Map({ children }: { children: React.ReactNode; mode: Mode }) {
       className="map"
       location={{ center: [37.618423, 55.751244], zoom: 12 }}
       mode="vector"
+      // @ts-ignore
       ref={(x) => (window.mapInstance = x)}
     >
       <YMapDefaultSchemeLayer />
