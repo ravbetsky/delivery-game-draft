@@ -39,7 +39,7 @@ function AdminUI({
         <br />
         {/* @ts-ignore */}
         <button onClick={() => levelStore.addLevel(JSON.parse(levelJSON))}>
-          Сохранить JSON уровень
+          Загрузить JSON уровень
         </button>
       </div>
     </div>

@@ -15,7 +15,7 @@ function Solve() {
   return (
     <YMap
       className="map"
-      location={{ center: level?.center, zoom: level?.zoom }}
+      location={{ center: level?.center, zoom: level?.zoom, bounds: level?.bounds }}
       mode="vector"
     >
       <YMapDefaultSchemeLayer />

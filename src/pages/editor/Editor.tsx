@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useSyncExternalStore } from "react";
 import { useMapAPI } from "../../shared/lib/map/MapProvider.hooks";
 import { levelStore } from "../../entities/level/store";
 import { useConnections, usePoints } from "./Editor.hooks";
@@ -8,11 +8,19 @@ import { nanoid } from "nanoid";
 import { markerRemoveLine } from "../../shared/ui/remove-line-marker";
 
 function Editor() {
+  const level = useSyncExternalStore(
+    levelStore.subscribe,
+    levelStore.getSnapshot
+  );
   const { YMapListener, YMapMarker, YMapFeature } = useMapAPI();
   const [connectionToCoords, setConnectionToCoords] = useState();
   const [connectionFrom, setConnectionFrom] = useState<string>();
-  const { points, addPoint, updatePoint, removePoint } = usePoints();
-  const { connections, addConnection, removeConnection } = useConnections();
+  const { points, addPoint, updatePoint, removePoint } = usePoints(
+    level?.points
+  );
+  const { connections, addConnection, removeConnection } = useConnections(
+    level?.connections
+  );
   const handleSaveLevel = useCallback(() => {
     levelStore.addLevel({
       connections: connections.map((connection) => connection.sort()),

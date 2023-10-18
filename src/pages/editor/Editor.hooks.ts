@@ -9,8 +9,8 @@ type UsePointsData = {
   removePoint: (id: string) => void;
 };
 
-export const usePoints = (): UsePointsData => {
-  const [points, setPoints] = useState<Point[]>([]);
+export const usePoints = (initialPoints: Point[] = []): UsePointsData => {
+  const [points, setPoints] = useState<Point[]>(initialPoints);
   const addPoint = useCallback(
     (coords: Coords) => {
       const newPoint: Point = {
@@ -52,8 +52,11 @@ type UseConnectionsData = {
   removeConnection: (connection: Connection) => void;
 };
 
-export const useConnections = (): UseConnectionsData => {
-  const [connections, setConnections] = useState<Connection[]>([]);
+export const useConnections = (
+  initialConnections: Connection[] = []
+): UseConnectionsData => {
+  const [connections, setConnections] =
+    useState<Connection[]>(initialConnections);
 
   const addConnection = useCallback(
     (connection: Connection) => {
