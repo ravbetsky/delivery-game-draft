@@ -1,0 +1,250 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.marker {
+  background-color: #302f2d;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  position: relative;
+  transform: translate(-50%, -50%);
+}
+
+.marker-solve {
+  background-color: #302f2d;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  font-size: 24px;
+  font-weight: bold;
+  position: relative;
+  color: white;
+  text-align: center;
+  line-height: 48px;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.marker-solve.active {
+  background-color: #1cc052;
+  pointer-events: none;
+}
+
+.marker-solve.current {
+  pointer-events: unset;
+  background-color: #1cc052;
+}
+
+.marker-solve.disable {
+  pointer-events: none;
+  background-color: rgba(0, 0, 0);
+  opacity: 0.3;
+}
+
+.marker-solve.current::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 52px;
+  height: 52px;
+
+  content: "";
+
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px #1cc052;
+
+  transform: scale(0.1);
+  animation: activateMarker 1s infinite linear;
+}
+
+@keyframes activateMarker {
+  0% {
+    opacity: 1;
+
+    transform: scale(0.3);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform: scale(2.5);
+  }
+}
+
+.marker > .marker-remove {
+  position: absolute;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: red;
+  top: 0;
+  text-align: center;
+  line-height: 0.8;
+  cursor: pointer;
+}
+
+.remove-line-marker {
+  position: relative;
+  transform: translate(-50%, -50%);
+  color: white;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: red;
+  text-align: center;
+  line-height: 0.8;
+  cursor: pointer;
+}
+
+.marker:hover {
+  cursor: grab;
+}
+
+.marker:active {
+  cursor: grabbing;
+}
+
+.marker > input {
+  width: 24px;
+  margin-top: 15px;
+  margin-left: 10px;
+}
+
+.admin-ui {
+  padding: 40px;
+  display: flex;
+  gap: 10px;
+}
+
+.solve-ui {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+}
+
+.solve-ui__score {
+  box-shadow: 0px 8px 20px 0px #0000001f;
+  background-color: white;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 30px;
+  min-width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px
+}
+
+.timer-ui {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 9999;
+  display: flex;
+  padding: 20px;
+  width: 100%;
+  justify-content: center;
+}
+
+.timer-ui__timer {
+  background-color: rgba(0,0,0,0.4);
+  bottom: 0;
+  color: white;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 30px;
+  min-width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px
+}
+
+.solve-ui__score::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: url('./assets/box.svg');
+}
